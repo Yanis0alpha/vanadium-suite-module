@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: MIT
+     Systeme uniquement : sans certificat declare, Android exige un paquet systeme.
+     Aucun fallback force. Pas de provider tiers ajoute par defaut.
+     Ce fichier remplace la liste du framework, il ne la fusionne pas. -->
+<webviewproviders>
+    <webviewprovider description="AOSP WebView"
+        packageName="com.android.webview" availableByDefault="true" />
+    <webviewprovider description="Google WebView"
+        packageName="com.google.android.webview" availableByDefault="true" />
+    <webviewprovider description="Vanadium WebView"
+        packageName="app.vanadium.webview" availableByDefault="true" />
+</webviewproviders>

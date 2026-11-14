@@ -1,0 +1,6 @@
+id=vanadium-suite
+name=Vanadium Suite (Browser + WebView)
+version=v1.1
+versionCode=15708103093
+author=vanadium-suite
+description=Bases systeme Browser + WebView + Config. Mises a jour utilisateur conservees. Sans Action ni WebUI. Remplace le complement Browser.

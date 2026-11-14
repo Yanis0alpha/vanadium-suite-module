@@ -1,0 +1,51 @@
+#!/sbin/sh
+#################
+# Vanadium Suite - universal installer stub
+# Magisk / KernelSU / KernelSU-Next / APatch
+#################
+umask 022
+OUTFD=$2
+ZIPFILE=$3
+MODID=vanadium-suite
+
+ui_print() { echo "$1"; }
+abort() { ui_print "! $1"; exit 1; }
+
+# ---- Magisk ----
+if [ -f /data/adb/magisk/util_functions.sh ]; then
+  . /data/adb/magisk/util_functions.sh
+  install_module
+  exit 0
+fi
+
+# ---- KernelSU / KernelSU-Next / APatch ----
+# These managers do not ship Magisk's util_functions.sh. Provide the minimal
+# Magisk API (ui_print / abort / set_perm*) and run customize.sh ourselves.
+[ -n "$MODPATH" ] || MODPATH=/data/adb/modules_update/$MODID
+[ -n "$MODPATH" ] || abort "MODPATH introuvable"
+mkdir -p "$MODPATH" || abort "impossible de creer $MODPATH"
+mkdir -p /data/local/tmp
+
+# busybox from the root manager when available
+for bb in /data/adb/ksu/bin/busybox /data/adb/ap/bin/busybox /data/adb/magisk/busybox; do
+  [ -x "$bb" ] && { PATH="$PATH:${bb%/*}"; break; }
+done
+
+set_perm() {
+  chown "$2:$3" "$1" && chmod "$4" "$1" || return 1
+  chcon "${5:-u:object_r:system_file:s0}" "$1" 2>/dev/null
+}
+set_perm_recursive() {
+  find "$1" -type d -exec chown "$2:$3" {} \;
+  find "$1" -type d -exec chmod "$4" {} \;
+  find "$1" -type f -exec chown "$2:$3" {} \;
+  find "$1" -type f -exec chmod "$5" {} \;
+  find "$1" -exec chcon "${6:-u:object_r:system_file:s0}" {} \; 2>/dev/null
+}
+
+# Extract everything except the installer metadata, then hand over to customize.sh
+unzip -o "$ZIPFILE" -x 'META-INF/*' -d "$MODPATH" >&2 || abort "extraction impossible"
+[ -f "$MODPATH/customize.sh" ] || abort "customize.sh absent du zip"
+
+. "$MODPATH/customize.sh"
+exit 0
