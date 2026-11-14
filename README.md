@@ -4,7 +4,7 @@ Module root pour installer les bases système de **Vanadium Browser**,
 **Vanadium WebView** et **Vanadium Config**, puis laisser les mises à jour à
 l’**App Store GrapheneOS**.
 
-**Version : v1.1 — testée par l’utilisateur sur VoltageOS 16.2 / Android 16,
+**Version : v1 — testée par l’utilisateur sur VoltageOS 16.2 / Android 16,
 ARM64 multilib, avec BakaSU.** Les autres configurations ne sont pas validées.
 
 > Projet communautaire non officiel, sans affiliation avec GrapheneOS.
@@ -28,7 +28,7 @@ Les APK et leurs numéros de version ne sont ni modifiés ni resignés.
 **L’ancienne base n’est pas destinée à rester utilisée au quotidien.** Appliquer
 les mises à jour disponibles avant de naviguer. Si elles ne sont pas accessibles
 ou ne fonctionnent pas, conserver le WebView AOSP et un navigateur à jour.
-Le numéro `v1.1` du module est indépendant de celui des applications.
+Le numéro `v1` du module est indépendant de celui des applications.
 
 ## Fonctionnalités
 
@@ -143,7 +143,7 @@ utilisateur. Le comportement final dépend néanmoins des paquets restants et du
 Sous Linux avec Bash et `zip` :
 
 ```sh
-bash tools/build.sh dist/vanadium-suite-v1.1.zip
+bash tools/build.sh dist/vanadium-suite-v1.zip
 ```
 
 Le binaire overlay validé est inclus dans `overlay/`. Pour le reconstruire depuis
