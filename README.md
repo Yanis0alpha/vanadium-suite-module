@@ -1,4 +1,3 @@
-[README.md](https://github.com/user-attachments/files/34846593/README.md)
 # Vanadium Suite
 
 Module root pour installer les bases système de **Vanadium Browser**,
