@@ -76,7 +76,7 @@ la liste des providers WebView.
 Flasher par-dessus `vanadium-suite`, sans désinstaller les mises à jour.
 Le complément historique `vanadium-browser-system` est désactivé à la fin de la
 préparation réussie. Après redémarrage et vérification, il peut être supprimé.
-La v1.1 remplace l’ancien overlay par `org.vanadiumsuite.overlay.webview`.
+La v1 remplace l’ancien overlay par `org.vanadiumsuite.overlay.webview`.
 
 ### Fournir les APK hors ligne
 
